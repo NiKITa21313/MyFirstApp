@@ -1,0 +1,15 @@
+D:\Проекты C#\telecommunication_company\AddUser\bin\Debug\AddUser.exe.config
+D:\Проекты C#\telecommunication_company\AddUser\bin\Debug\AddUser.exe
+D:\Проекты C#\telecommunication_company\AddUser\bin\Debug\AddUser.pdb
+D:\Проекты C#\telecommunication_company\AddUser\bin\Debug\EntityFramework.dll
+D:\Проекты C#\telecommunication_company\AddUser\bin\Debug\EntityFramework.SqlServer.dll
+D:\Проекты C#\telecommunication_company\AddUser\bin\Debug\HashPAsswords.dll
+D:\Проекты C#\telecommunication_company\AddUser\bin\Debug\HashPAsswords.pdb
+D:\Проекты C#\telecommunication_company\AddUser\bin\Debug\EntityFramework.xml
+D:\Проекты C#\telecommunication_company\AddUser\bin\Debug\EntityFramework.SqlServer.xml
+D:\Проекты C#\telecommunication_company\AddUser\bin\Debug\ru\EntityFramework.resources.dll
+D:\Проекты C#\telecommunication_company\AddUser\obj\Debug\AddUser.csproj.AssemblyReference.cache
+D:\Проекты C#\telecommunication_company\AddUser\obj\Debug\AddUser.csproj.CoreCompileInputs.cache
+D:\Проекты C#\telecommunication_company\AddUser\obj\Debug\AddUser.csproj.CopyComplete
+D:\Проекты C#\telecommunication_company\AddUser\obj\Debug\AddUser.exe
+D:\Проекты C#\telecommunication_company\AddUser\obj\Debug\AddUser.pdb

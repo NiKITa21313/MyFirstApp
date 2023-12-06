@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d1fd2c80f96449ddb88e1841124c39cb" Name="Diagram1">
+        <EntityTypeShape EntityType="telekommunikationModel.Doljnost" Width="1.5" PointX="3.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="telekommunikationModel.Klienty" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="telekommunikationModel.Oborudovanie" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="telekommunikationModel.Pokupka_oborudovaniya" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="telekommunikationModel.Sotrudniki" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="telekommunikationModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="telekommunikationModel.User" Width="1.5" PointX="3.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="telekommunikationModel.Uslugi" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="telekommunikationModel.Vipolnenie_zayavki" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="telekommunikationModel.Zayavka" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="telekommunikationModel.FK_Sotrudniki_Doljnost" ManuallyRouted="false" />
+        <AssociationConnector Association="telekommunikationModel.FK_Pokupka_oborudovaniya_Klienty" ManuallyRouted="false" />
+        <AssociationConnector Association="telekommunikationModel.FK_Zayavka_Klienty" ManuallyRouted="false" />
+        <AssociationConnector Association="telekommunikationModel.FK_Sotrudniki_User" ManuallyRouted="false" />
+        <AssociationConnector Association="telekommunikationModel.FK_Vipolnenie_zayavki_Sotrudniki" ManuallyRouted="false" />
+        <AssociationConnector Association="telekommunikationModel.FK_Zayavka_Uslugi" ManuallyRouted="false" />
+        <AssociationConnector Association="telekommunikationModel.FK_Vipolnenie_zayavki_Zayavka" ManuallyRouted="false" />
+        <AssociationConnector Association="telekommunikationModel.Spisok_oborudovaniya" ManuallyRouted="false" />
+        <AssociationConnector Association="telekommunikationModel.Spisok_pokupki_oborodovaniya" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

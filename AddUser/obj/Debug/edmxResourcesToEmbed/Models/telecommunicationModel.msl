@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище telecommunicationModelContainer" CdmEntityContainer="telecommunicationEntities1">
+    <EntitySetMapping Name="Avtorizaciya">
+      <EntityTypeMapping TypeName="telecommunicationModel.Avtorizaciya">
+        <MappingFragment StoreEntitySet="Avtorizaciya">
+          <ScalarProperty Name="ID_avtorizacii" ColumnName="ID_avtorizacii" />
+          <ScalarProperty Name="ID_sotrudnika" ColumnName="ID_sotrudnika" />
+          <ScalarProperty Name="Parol" ColumnName="Parol" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klienty">
+      <EntityTypeMapping TypeName="telecommunicationModel.Klienty">
+        <MappingFragment StoreEntitySet="Klienty">
+          <ScalarProperty Name="ID_klienta" ColumnName="ID_klienta" />
+          <ScalarProperty Name="Imya" ColumnName="Imya" />
+          <ScalarProperty Name="Familiya" ColumnName="Familiya" />
+          <ScalarProperty Name="Nomer_telefona" ColumnName="Nomer_telefona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Oplaty">
+      <EntityTypeMapping TypeName="telecommunicationModel.Oplaty">
+        <MappingFragment StoreEntitySet="Oplaty">
+          <ScalarProperty Name="ID_oplaty" ColumnName="ID_oplaty" />
+          <ScalarProperty Name="ID_zakaza" ColumnName="ID_zakaza" />
+          <ScalarProperty Name="Summa_oplaty" ColumnName="Summa_oplaty" />
+          <ScalarProperty Name="Data_oplaty" ColumnName="Data_oplaty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pokupki">
+      <EntityTypeMapping TypeName="telecommunicationModel.Pokupki">
+        <MappingFragment StoreEntitySet="Pokupki">
+          <ScalarProperty Name="ID_pokupki" ColumnName="ID_pokupki" />
+          <ScalarProperty Name="ID_zakaza" ColumnName="ID_zakaza" />
+          <ScalarProperty Name="ID_produkta" ColumnName="ID_produkta" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Produkty">
+      <EntityTypeMapping TypeName="telecommunicationModel.Produkty">
+        <MappingFragment StoreEntitySet="Produkty">
+          <ScalarProperty Name="ID_producta" ColumnName="ID_producta" />
+          <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+          <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+          <ScalarProperty Name="Colichestvo_na_sklade" ColumnName="Colichestvo_na_sklade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sklad">
+      <EntityTypeMapping TypeName="telecommunicationModel.Sklad">
+        <MappingFragment StoreEntitySet="Sklad">
+          <ScalarProperty Name="ID_producta" ColumnName="ID_producta" />
+          <ScalarProperty Name="Addres" ColumnName="Addres" />
+          <ScalarProperty Name="Colichestvo_na_sklade" ColumnName="Colichestvo_na_sklade" />
+          <ScalarProperty Name="ID_sklada" ColumnName="ID_sklada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sotrudniki">
+      <EntityTypeMapping TypeName="telecommunicationModel.Sotrudniki">
+        <MappingFragment StoreEntitySet="Sotrudniki">
+          <ScalarProperty Name="ID_sotrudnika" ColumnName="ID_sotrudnika" />
+          <ScalarProperty Name="Imya" ColumnName="Imya" />
+          <ScalarProperty Name="Familiya" ColumnName="Familiya" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Parol" ColumnName="Parol" />
+          <ScalarProperty Name="Doljnist" ColumnName="Doljnist" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="telecommunicationModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uslugi">
+      <EntityTypeMapping TypeName="telecommunicationModel.Uslugi">
+        <MappingFragment StoreEntitySet="Uslugi">
+          <ScalarProperty Name="ID_uslugi" ColumnName="ID_uslugi" />
+          <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+          <ScalarProperty Name="Opisanie_uslugi" ColumnName="Opisanie_uslugi" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ustanovki">
+      <EntityTypeMapping TypeName="telecommunicationModel.Ustanovki">
+        <MappingFragment StoreEntitySet="Ustanovki">
+          <ScalarProperty Name="ID_ustanovki" ColumnName="ID_ustanovki" />
+          <ScalarProperty Name="ID_zayavki" ColumnName="ID_zayavki" />
+          <ScalarProperty Name="ID_sotrudnika" ColumnName="ID_sotrudnika" />
+          <ScalarProperty Name="Data_ustanovki" ColumnName="Data_ustanovki" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zakaz">
+      <EntityTypeMapping TypeName="telecommunicationModel.Zakaz">
+        <MappingFragment StoreEntitySet="Zakaz">
+          <ScalarProperty Name="ID_zakaza" ColumnName="ID_zakaza" />
+          <ScalarProperty Name="ID_klienta" ColumnName="ID_klienta" />
+          <ScalarProperty Name="Data_zakaza" ColumnName="Data_zakaza" />
+          <ScalarProperty Name="Status_zakaza" ColumnName="Status_zakaza" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zayavki">
+      <EntityTypeMapping TypeName="telecommunicationModel.Zayavki">
+        <MappingFragment StoreEntitySet="Zayavki">
+          <ScalarProperty Name="ID_zayavki" ColumnName="ID_zayavki" />
+          <ScalarProperty Name="ID_klienta" ColumnName="ID_klienta" />
+          <ScalarProperty Name="Data_zayavki" ColumnName="Data_zayavki" />
+          <ScalarProperty Name="ID_uslugi" ColumnName="ID_uslugi" />
+          <ScalarProperty Name="Status_zayavki" ColumnName="Status_zayavki" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

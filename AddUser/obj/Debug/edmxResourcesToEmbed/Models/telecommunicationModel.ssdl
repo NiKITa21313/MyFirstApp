@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище telecommunicationModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Avtorizaciya">
+    <Key>
+      <PropertyRef Name="ID_avtorizacii" />
+    </Key>
+    <Property Name="ID_avtorizacii" Type="int" Nullable="false" />
+    <Property Name="ID_sotrudnika" Type="int" />
+    <Property Name="Parol" Type="nvarchar(max)" />
+    <Property Name="Login" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Klienty">
+    <Key>
+      <PropertyRef Name="ID_klienta" />
+    </Key>
+    <Property Name="ID_klienta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Imya" Type="nvarchar" MaxLength="50" />
+    <Property Name="Familiya" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nomer_telefona" Type="nchar" MaxLength="11" />
+  </EntityType>
+  <EntityType Name="Oplaty">
+    <Key>
+      <PropertyRef Name="ID_oplaty" />
+    </Key>
+    <Property Name="ID_oplaty" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_zakaza" Type="int" />
+    <Property Name="Summa_oplaty" Type="float" />
+    <Property Name="Data_oplaty" Type="date" />
+  </EntityType>
+  <EntityType Name="Pokupki">
+    <Key>
+      <PropertyRef Name="ID_pokupki" />
+    </Key>
+    <Property Name="ID_pokupki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_zakaza" Type="int" />
+    <Property Name="ID_produkta" Type="int" />
+    <Property Name="Cena" Type="float" />
+  </EntityType>
+  <EntityType Name="Produkty">
+    <Key>
+      <PropertyRef Name="ID_producta" />
+    </Key>
+    <Property Name="ID_producta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" />
+    <Property Name="Opisanie" Type="nvarchar(max)" />
+    <Property Name="Colichestvo_na_sklade" Type="int" />
+  </EntityType>
+  <EntityType Name="Sklad">
+    <Key>
+      <PropertyRef Name="ID_sklada" />
+    </Key>
+    <Property Name="ID_producta" Type="int" />
+    <Property Name="Addres" Type="nvarchar" MaxLength="50" />
+    <Property Name="Colichestvo_na_sklade" Type="int" />
+    <Property Name="ID_sklada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sotrudniki">
+    <Key>
+      <PropertyRef Name="ID_sotrudnika" />
+    </Key>
+    <Property Name="ID_sotrudnika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Imya" Type="nvarchar" MaxLength="50" />
+    <Property Name="Familiya" Type="nvarchar" MaxLength="50" />
+    <Property Name="Login" Type="nvarchar(max)" />
+    <Property Name="Parol" Type="nvarchar(max)" />
+    <Property Name="Doljnist" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Uslugi">
+    <Key>
+      <PropertyRef Name="ID_uslugi" />
+    </Key>
+    <Property Name="ID_uslugi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" />
+    <Property Name="Opisanie_uslugi" Type="nvarchar(max)" />
+    <Property Name="Cena" Type="float" />
+  </EntityType>
+  <EntityType Name="Ustanovki">
+    <Key>
+      <PropertyRef Name="ID_ustanovki" />
+    </Key>
+    <Property Name="ID_ustanovki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_zayavki" Type="int" />
+    <Property Name="ID_sotrudnika" Type="int" />
+    <Property Name="Data_ustanovki" Type="date" />
+  </EntityType>
+  <EntityType Name="Zakaz">
+    <Key>
+      <PropertyRef Name="ID_zakaza" />
+    </Key>
+    <Property Name="ID_zakaza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_klienta" Type="int" />
+    <Property Name="Data_zakaza" Type="date" />
+    <Property Name="Status_zakaza" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Zayavki">
+    <Key>
+      <PropertyRef Name="ID_zayavki" />
+    </Key>
+    <Property Name="ID_zayavki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_klienta" Type="int" />
+    <Property Name="Data_zayavki" Type="date" />
+    <Property Name="ID_uslugi" Type="int" />
+    <Property Name="Status_zayavki" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Avtorizaciya_Sotrudniki">
+    <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="0..1" />
+    <End Role="Avtorizaciya" Type="Self.Avtorizaciya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sotrudniki">
+        <PropertyRef Name="ID_sotrudnika" />
+      </Principal>
+      <Dependent Role="Avtorizaciya">
+        <PropertyRef Name="ID_sotrudnika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Oplaty_Zakaz">
+    <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="0..1" />
+    <End Role="Oplaty" Type="Self.Oplaty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zakaz">
+        <PropertyRef Name="ID_zakaza" />
+      </Principal>
+      <Dependent Role="Oplaty">
+        <PropertyRef Name="ID_zakaza" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pokupki_Produkty">
+    <End Role="Produkty" Type="Self.Produkty" Multiplicity="0..1" />
+    <End Role="Pokupki" Type="Self.Pokupki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produkty">
+        <PropertyRef Name="ID_producta" />
+      </Principal>
+      <Dependent Role="Pokupki">
+        <PropertyRef Name="ID_produkta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pokupki_Zakaz">
+    <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="0..1" />
+    <End Role="Pokupki" Type="Self.Pokupki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zakaz">
+        <PropertyRef Name="ID_zakaza" />
+      </Principal>
+      <Dependent Role="Pokupki">
+        <PropertyRef Name="ID_zakaza" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sklad_Produkty">
+    <End Role="Produkty" Type="Self.Produkty" Multiplicity="0..1" />
+    <End Role="Sklad" Type="Self.Sklad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produkty">
+        <PropertyRef Name="ID_producta" />
+      </Principal>
+      <Dependent Role="Sklad">
+        <PropertyRef Name="ID_producta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ustanovki_Sotrudniki">
+    <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="0..1" />
+    <End Role="Ustanovki" Type="Self.Ustanovki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sotrudniki">
+        <PropertyRef Name="ID_sotrudnika" />
+      </Principal>
+      <Dependent Role="Ustanovki">
+        <PropertyRef Name="ID_sotrudnika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ustanovki_Zayavki">
+    <End Role="Zayavki" Type="Self.Zayavki" Multiplicity="0..1" />
+    <End Role="Ustanovki" Type="Self.Ustanovki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zayavki">
+        <PropertyRef Name="ID_zayavki" />
+      </Principal>
+      <Dependent Role="Ustanovki">
+        <PropertyRef Name="ID_zayavki" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zakaz_Klienty">
+    <End Role="Klienty" Type="Self.Klienty" Multiplicity="0..1" />
+    <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klienty">
+        <PropertyRef Name="ID_klienta" />
+      </Principal>
+      <Dependent Role="Zakaz">
+        <PropertyRef Name="ID_klienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zayavki_Klienty">
+    <End Role="Klienty" Type="Self.Klienty" Multiplicity="0..1" />
+    <End Role="Zayavki" Type="Self.Zayavki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klienty">
+        <PropertyRef Name="ID_klienta" />
+      </Principal>
+      <Dependent Role="Zayavki">
+        <PropertyRef Name="ID_klienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zayavki_Uslugi">
+    <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+    <End Role="Zayavki" Type="Self.Zayavki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uslugi">
+        <PropertyRef Name="ID_uslugi" />
+      </Principal>
+      <Dependent Role="Zayavki">
+        <PropertyRef Name="ID_uslugi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище telecommunicationModelContainer">
+    <EntitySet Name="Avtorizaciya" EntityType="Self.Avtorizaciya" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Klienty" EntityType="Self.Klienty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Oplaty" EntityType="Self.Oplaty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pokupki" EntityType="Self.Pokupki" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Produkty" EntityType="Self.Produkty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sklad" EntityType="Self.Sklad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sotrudniki" EntityType="Self.Sotrudniki" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Uslugi" EntityType="Self.Uslugi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ustanovki" EntityType="Self.Ustanovki" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zakaz" EntityType="Self.Zakaz" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zayavki" EntityType="Self.Zayavki" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Avtorizaciya_Sotrudniki" Association="Self.FK_Avtorizaciya_Sotrudniki">
+      <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+      <End Role="Avtorizaciya" EntitySet="Avtorizaciya" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Oplaty_Zakaz" Association="Self.FK_Oplaty_Zakaz">
+      <End Role="Zakaz" EntitySet="Zakaz" />
+      <End Role="Oplaty" EntitySet="Oplaty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pokupki_Produkty" Association="Self.FK_Pokupki_Produkty">
+      <End Role="Produkty" EntitySet="Produkty" />
+      <End Role="Pokupki" EntitySet="Pokupki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pokupki_Zakaz" Association="Self.FK_Pokupki_Zakaz">
+      <End Role="Zakaz" EntitySet="Zakaz" />
+      <End Role="Pokupki" EntitySet="Pokupki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sklad_Produkty" Association="Self.FK_Sklad_Produkty">
+      <End Role="Produkty" EntitySet="Produkty" />
+      <End Role="Sklad" EntitySet="Sklad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ustanovki_Sotrudniki" Association="Self.FK_Ustanovki_Sotrudniki">
+      <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+      <End Role="Ustanovki" EntitySet="Ustanovki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ustanovki_Zayavki" Association="Self.FK_Ustanovki_Zayavki">
+      <End Role="Zayavki" EntitySet="Zayavki" />
+      <End Role="Ustanovki" EntitySet="Ustanovki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zakaz_Klienty" Association="Self.FK_Zakaz_Klienty">
+      <End Role="Klienty" EntitySet="Klienty" />
+      <End Role="Zakaz" EntitySet="Zakaz" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zayavki_Klienty" Association="Self.FK_Zayavki_Klienty">
+      <End Role="Klienty" EntitySet="Klienty" />
+      <End Role="Zayavki" EntitySet="Zayavki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zayavki_Uslugi" Association="Self.FK_Zayavki_Uslugi">
+      <End Role="Uslugi" EntitySet="Uslugi" />
+      <End Role="Zayavki" EntitySet="Zayavki" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

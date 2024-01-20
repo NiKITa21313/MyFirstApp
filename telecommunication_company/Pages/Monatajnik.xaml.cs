@@ -12,17 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using telecommunication_company.Model;
 
 namespace telecommunication_company.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для Monatajnik.xaml
-    /// </summary>
+    
     public partial class Monatajnik : Page
     {
-        public Monatajnik()
-        {
+        public Monatajnik(string imya, string familiya, string otchestvo, string privetstvie)//принимает 3 параметра, чтобы заполнить стороку на странице
+        { 
             InitializeComponent();
+            txtbPrivet.Text = $"{privetstvie} {familiya} {imya} {otchestvo}";
         }
     }
 }

@@ -20,9 +20,10 @@ namespace telecommunication_company.Pages
     /// </summary>
     public partial class Manager : Page
     {
-        public Manager()
+        public Manager(string imya, string familiya, string otchestvo, string privetstvie)
         {
             InitializeComponent();
+            txtbPrivet.Text = $"{privetstvie} {familiya} {imya} {otchestvo}";
         }
     }
 }

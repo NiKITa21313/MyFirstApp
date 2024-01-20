@@ -47,6 +47,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -77,6 +78,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AddSotrudnik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Administrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Autho.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,6 +106,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Redactirovanie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Doljnost.cs" />
@@ -109,6 +122,12 @@
     <Compile Include="Model\Uslugi.cs" />
     <Compile Include="Model\Vipolnenie_zayavki.cs" />
     <Compile Include="Model\Zayavka.cs" />
+    <Compile Include="Pages\AddSotrudnik.xaml.cs">
+      <DependentUpon>AddSotrudnik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administrator.xaml.cs">
+      <DependentUpon>Administrator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Autho.xaml.cs">
       <DependentUpon>Autho.xaml</DependentUpon>
     </Compile>
@@ -123,6 +142,9 @@
     </Compile>
     <Compile Include="Pages\Monatajnik.xaml.cs">
       <DependentUpon>Monatajnik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Redactirovanie.xaml.cs">
+      <DependentUpon>Redactirovanie.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -150,7 +172,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\User.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\logo.png" />
   </ItemGroup>
@@ -158,10 +182,6 @@
     <Resource Include="Resources\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AddUser\AddUser.csproj">
-      <Project>{c36ce403-c5c5-49b3-8125-b542823c7ae7}</Project>
-      <Name>AddUser</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HashPAsswords\HashPAsswords.csproj">
       <Project>{083706ae-28a6-4bc1-9337-8dcce1422441}</Project>
       <Name>HashPAsswords</Name>

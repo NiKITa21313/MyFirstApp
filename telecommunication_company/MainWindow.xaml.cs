@@ -28,5 +28,10 @@ namespace telecommunication_company
                 btnBack.Visibility = Visibility.Hidden;
             }
         }
+
+        private void FrmMain_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+
+        }
     }
 }

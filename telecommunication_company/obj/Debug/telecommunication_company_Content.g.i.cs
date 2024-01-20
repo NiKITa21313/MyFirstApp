@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/telecommunicationmodel.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/telecommunicationmodel.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/user.jpg")]
 
 

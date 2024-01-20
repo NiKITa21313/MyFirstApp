@@ -15,7 +15,7 @@ namespace telecommunication_company.Pages
     {
         private int countUnsuccessful = 0;
         private DispatcherTimer timer;
-        private int countdown = 10;
+        private int count = 11;
 
 
         public Autho()
@@ -39,9 +39,8 @@ namespace telecommunication_company.Pages
             string inpitPassword = pswbPassword.Password.Trim();
             string hashPassword = HashPassvord.HashPassword(inpitPassword);
  
-            var user = TeleCompModel.GetContext().User.Where(p => p.Login == login && p.Password == hashPassword).FirstOrDefault();
-            //int userCount = TeleCompModel.GetContext().User.Where(p => p.Login == login && p.Password == hashPassword).Count(); по сути ненужная строка
-
+            var user = TeleCompModel.GetContext().User.Where(p => p.Login == login && p.Password == hashPassword).FirstOrDefault();          
+           
             if (login.Length > 0 && inpitPassword.Length > 0)//проверка на заполнение логина и пароля
             {
                 if (countUnsuccessful < 1)//проверка на количество попыток входа 
@@ -50,7 +49,28 @@ namespace telecommunication_company.Pages
                     {
                         var s = TeleCompModel.GetContext().Sotrudniki.Where(s1 => s1.ID_usera == user.ID_usera).FirstOrDefault();//получение ID должности
                         int id = s.Doljnost;
-                        LoadForm(id);
+                        //получение ФИО пользователя из контекста БД
+                        string privetstvie = GetDate();
+                        string familiya = s.Familiya;
+                        string imya = s.Imya;
+                        string otchestvo = s.Otchestvo;
+
+                        DateTime currentTime = DateTime.Now;
+                        if (currentTime.TimeOfDay >= new TimeSpan(10, 0, 0) && currentTime.TimeOfDay <= new TimeSpan(19, 0, 0))
+                        {
+                            LoadForm(id, imya, familiya, otchestvo, privetstvie);//теперь метод принимает 4 параметра, чтобы передавать ФИО в другие окна
+                        }
+                        else 
+                        {
+                            txtbLogin.Visibility = Visibility.Hidden;//скрыть поля ввода пароля и логина
+                            txtLogin.Visibility = Visibility.Hidden;
+                            txtPassword.Visibility = Visibility.Hidden;
+                            pswbPassword.Visibility = Visibility.Hidden;
+                            btnEnter.IsEnabled = false;
+                            btnEnterGuests.IsEnabled = false;
+                            MessageBox.Show("Сейчас не рабочее время");
+                        }
+                        
                     }
                     else
                     {
@@ -107,12 +127,14 @@ namespace telecommunication_company.Pages
                             // Блокировать поле ввода пароля
                             txtbLogin.IsEnabled = false;
                             pswbPassword.IsEnabled = false;
-                            countdown = 10;
-                            timerLabel.Content = countdown.ToString();
+                            btnEnter.IsEnabled = false;
+                            btnEnterGuests.IsEnabled = false;
+                            count = 11;
+                            //timerLabel.Text = countdown.ToString();
                             // Запустить таймер
                             timer.Start(); 
                             timerLabel.Foreground = Brushes.Red;
-                            timerLabel.Content = "10"; // Начальное значение таймера
+                            //timerLabel.Text = "10"; // Начальное значение таймера
                             countUnsuccessful = 0;
                         }
                     }
@@ -134,39 +156,62 @@ namespace telecommunication_company.Pages
             }
             return new string (captchaChars);
         }
-        private void LoadForm(int role)//метод для перехода на страницы в зависимоти от роли, роль определяется по ID должности из таблицы
+        private void LoadForm(int role, string imya, string familiya, string otchestvo, string privetstvie)//метод для перехода на страницы в зависимоти от роли, роль определяется по ID должности из таблицы
         {   
             switch (role) 
             {
                 case 1:
-                    NavigationService.Navigate(new Monatajnik());
+                    NavigationService.Navigate(new Monatajnik(imya, familiya, otchestvo, privetstvie));
                     break;
                 case 2:
-                    NavigationService.Navigate(new Manager());
+                    NavigationService.Navigate(new Manager(imya, familiya, otchestvo, privetstvie));
                     break;
                 case 3:
-                    NavigationService.Navigate(new Konsultant());
+                    NavigationService.Navigate(new Konsultant(imya, familiya, otchestvo, privetstvie));
                     break;
-            }
-                
+                case 4:
+                    NavigationService.Navigate(new Administrator());
+                    break;
+            }                
         }
         private void Timer_Tick(object sender, EventArgs e)//разблокирование полей ввода
         {       
-            timerLabel.Content = ""; // Очистить значение таймера
-
-            countdown--;
-
-            timerLabel.Content = countdown.ToString();
+            timerLabel.Text = ""; // Очистить значение таймера
+            count--;
+            timerLabel.TextDecorations = TextDecorations.Underline;
+            timerLabel.Text = $"До разблокировки осталось {count} секунд";
             
-            if (countdown == 0)//когда счетчик станет 0, то поля для ввода откроются
+            if (count == 0)//когда счетчик станет 0, то поля для ввода откроются
             {
                 timer.Stop();
                 txtbLogin.IsEnabled = true;
                 pswbPassword.IsEnabled = true;
+                btnEnter.IsEnabled = true;
+                btnEnterGuests.IsEnabled = true;
                 txtbLogin.Text = null;
                 pswbPassword.Password = null;
-                timerLabel.Content = "";
+                timerLabel.Text = "";
             }
         }
+        private string GetDate()//метод для получения строки приветствия в зависимости от времени
+        {
+            DateTime currentTime = DateTime.Now;
+            if (currentTime.TimeOfDay >= new TimeSpan(10, 0, 0) && currentTime.TimeOfDay <= new TimeSpan(12, 0, 0))
+            {
+                return "Доброе утро";
+            }
+            else if (currentTime.TimeOfDay > new TimeSpan(12, 0, 0) && currentTime.TimeOfDay <= new TimeSpan(17, 0, 0))
+            {
+                return "Добрый день";
+            }
+            else if (currentTime.TimeOfDay > new TimeSpan(17, 0, 0) && currentTime.TimeOfDay <= new TimeSpan(19, 0, 0))
+            {
+                return "Добрый вечер";
+            }
+            else 
+            {                
+                return "Доброго времени суток";
+            }      
+        }       
     } 
 }

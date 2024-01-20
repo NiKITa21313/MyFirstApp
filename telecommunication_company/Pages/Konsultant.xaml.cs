@@ -20,9 +20,11 @@ namespace telecommunication_company.Pages
     /// </summary>
     public partial class Konsultant : Page
     {
-        public Konsultant()
+        public Konsultant(string imya, string familiya, string otchestvo, string privetstvie)
         {
             InitializeComponent();
+
+            txtbPrivet.Text = $"{privetstvie} {familiya} {imya} {otchestvo}";
         }
     }
 }

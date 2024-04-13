@@ -5,12 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:telecommunication_company.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="800"
       Title="AddSotrudnik"
       Background="White">
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -27,15 +31,20 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        
         <Label Grid.Row="0" Grid.Column="0" Content="Фамилия" HorizontalAlignment="Right" VerticalAlignment="Center"  Height="40"/>
         <Label Grid.Row="1" Grid.Column="0" Content="Имя" HorizontalAlignment="Right" VerticalAlignment="Center"  Height="40"/>
         <Label Grid.Row="2" Grid.Column="0" Content="*Отчество" HorizontalAlignment="Right" VerticalAlignment="Center" Height="40"/>
         <Label Grid.Row="3" Grid.Column="0" Content="Дата рождения" HorizontalAlignment="Right" VerticalAlignment="Center" Height="40"/>
         <Label Grid.Row="4" Grid.Column="0" Content="Должность" HorizontalAlignment="Right" VerticalAlignment="Center" Height="40"/>
-        <Label Grid.Row="5" Grid.Column="0" Content="Номер телефона" HorizontalAlignment="Right" VerticalAlignment="Center" Height="40"/>
-        <Label Grid.Row="6" Grid.Column="0" Content="Адрес" HorizontalAlignment="Right" VerticalAlignment="Center" Height="40"/>
-        <Label Grid.Row="7" Grid.Column="0" Content="Логин" HorizontalAlignment="Right" VerticalAlignment="Center" Height="40"/>
-        <Label Grid.Row="8" Grid.Column="0" Content="Пароль" HorizontalAlignment="Right" VerticalAlignment="Center" Height="40"/>
+        <Label Grid.Row="6" Grid.Column="0" Content="Номер телефона" HorizontalAlignment="Right" VerticalAlignment="Center" Height="40"/>
+        <Label Grid.Row="5" Grid.Column="0" Content="Адрес" HorizontalAlignment="Right" VerticalAlignment="Center" Height="40"/>
+        <Label Grid.Row="7" Grid.Column="0" Content="Почта" HorizontalAlignment="Right" VerticalAlignment="Center" Height="40"/>
+        <Label Grid.Row="8" Grid.Column="0" Content="Логин" HorizontalAlignment="Right" VerticalAlignment="Center" Height="40"/>
+        <Label Grid.Row="9" Grid.Column="0" Content="Пароль" HorizontalAlignment="Right" VerticalAlignment="Center" Height="40"/>
+        <Label Grid.Row="10" Grid.Column="0" Content="Серия" HorizontalAlignment="Right" VerticalAlignment="Center" Height="40"/>
+        <Label Grid.Row="11" Grid.Column="0" Content="Номер" HorizontalAlignment="Right" VerticalAlignment="Center" Height="40"/>
+        <Label Grid.Row="12" Grid.Column="0" Content="Кем выдан" HorizontalAlignment="Right" VerticalAlignment="Center" Height="40"/>
 
         <Image Grid.Row="1" Grid.Column="3" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="150"  Width="150" Source="/Resources/User.jpg"/>
         <Button Grid.Row="4" Grid.Column="3" Content="Добавить фото" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#FFD2C0B1"/>
@@ -45,13 +54,17 @@
         <TextBox  Grid.Row="2" Grid.Column="1" x:Name="txbOtchestvo" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="170" Height="25"/>
         <TextBox  Grid.Row="3" Grid.Column="1" x:Name="txbDataRojdeniya" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="25"/>
         <TextBox  Grid.Row="4" Grid.Column="1" x:Name="txbDoljnost" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="25"/>
-        <TextBox  Grid.Row="5" Grid.Column="1" x:Name="txbNomerTelefona" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="25"/>
-        <TextBox  Grid.Row="6" Grid.Column="1" x:Name="txbAdres" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="25"/>
-        <TextBox  Grid.Row="7" Grid.Column="1" x:Name="txbLogin" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="25"/>
-        <TextBox  Grid.Row="8" Grid.Column="1" x:Name="txbPassword" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="25"/>
+        <TextBox  Grid.Row="6" Grid.Column="1" x:Name="txbNomerTelefona" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="25"/>
+        <TextBox  Grid.Row="5" Grid.Column="1" x:Name="txbAdres" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="25"/>
+        <TextBox  Grid.Row="7" Grid.Column="1" x:Name="txbPochta" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="25"/>
+        <TextBox  Grid.Row="8" Grid.Column="1" x:Name="txbLogin" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="25"/>
+        <TextBox  Grid.Row="9" Grid.Column="1" x:Name="txbPassword" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="25"/>
+        <TextBox  Grid.Row="10" Grid.Column="1" x:Name="txbSeriya" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="25"/>
+        <TextBox  Grid.Row="11" Grid.Column="1" x:Name="txbNomer" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="25"/>
+        <TextBox  Grid.Row="12" Grid.Column="1" x:Name="txbVydan" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="25"/>
 
-        <Button  Grid.Row="7" Grid.Column="3" Content="Сохранить" HorizontalAlignment="Center"  Background="#FFD2C0B1" Width="160" Click="Button_Click_1"/>
-        <Button  Grid.Row="8" Grid.Column="3" Content="Очистить" HorizontalAlignment="Center" Background="#FFD2C0B1" Width="160" Click="Button_Click"/>
+        <Button  Grid.Row="11" Grid.Column="3" Content="Сохранить" HorizontalAlignment="Center"  Background="#FFD2C0B1" Width="160" Click="Button_Click_1"/>
+        <Button  Grid.Row="12" Grid.Column="3" Content="Очистить" HorizontalAlignment="Center" Background="#FFD2C0B1" Width="160" Click="Button_Click"/>
 
         <Label Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" Width="90" Height="25">
             <Label.Content>
@@ -59,7 +72,7 @@
             </Label.Content>
         </Label>
 
-        <Label Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="110" Height="25">
+        <Label Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="110" Height="25">
             <Label.Content>
                 <TextBlock Text="(+79991234567)" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" FontSize="12"/>
             </Label.Content>

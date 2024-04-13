@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>telecommunication_company</name>
+    </assembly>
+    <members>
+        <member name="T:telecommunication_company.App">
+            <summary>
+            Логика взаимодействия для App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:telecommunication_company.MainWindow">
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.MainWindow.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:telecommunication_company.Pages.AddSotrudnik">
+            <summary>
+            AddSotrudnik
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.AddSotrudnik.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.AddSotrudnik.Button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Метод для очистки полей записи
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:telecommunication_company.Pages.AddSotrudnik.Button_Click_1(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обработчик нажатия на кнопку добавить. Осуществляется добавление записи в БД 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:telecommunication_company.Pages.AddSotrudnik.Doljnost(System.String)">
+            <summary>
+            Метод для получения кода должности из БД
+            </summary>
+            <param name="doljnost"></param>
+            <returns>Вернет код должности, если должности нет вернет 0</returns>
+        </member>
+        <member name="M:telecommunication_company.Pages.AddSotrudnik.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:telecommunication_company.Pages.Administrator">
+            <summary>
+            Логика взаимодействия для Administrator.xaml
+            </summary>
+            <summary>
+            Administrator
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.Administrator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.Administrator.ListViewItem_MouseDoubleClick(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            <para>Обработчик двойного клика левой кнопки мыши на элемент списка</para> 
+            <para>После двойного клика осуществляется переход на страницу редактирования записи</para>     
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:telecommunication_company.Pages.Administrator.btnAdd_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обрабочтик нажатия на кнопку добавить. Переход на страницу добавления записи
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:telecommunication_company.Pages.Administrator.btnPoisk_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обработчик нажатия на кнопку поиска  
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:telecommunication_company.Pages.Administrator.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:telecommunication_company.Pages.Autho">
+            <summary>
+            Autho
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.Autho.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.Autho.btnEnter_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обработчик нажатия на кнопку "Войти" для авторизации
+            После заполнения полей логина и пароля пользователь нажимает кнопку и авторизуется
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:telecommunication_company.Pages.Autho.GetCaptcha(System.Int32)">
+            <summary>
+            Метод для получения набора символов капчи
+            </summary>
+            <param name="length"></param>
+            <returns>Вернет строку символов указанной длины</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:telecommunication_company.Pages.Autho.LoadForm(System.Int32,System.String,System.String,System.String,System.String)" -->
+        <member name="M:telecommunication_company.Pages.Autho.Timer_Tick(System.Object,System.EventArgs)">
+            <summary>
+            Метод запускает таймер и по истечению времени открывает поля для ввода
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:telecommunication_company.Pages.Autho.GetDate">
+            <summary>
+            Метод для получения строки приветствия
+            </summary>
+            <returns>Вернет строку приветствия в зависимости от времени суток</returns>
+        </member>
+        <member name="M:telecommunication_company.Pages.Autho.Verification">
+            <summary>
+            Метод для отправки кода на почту пользователя
+            </summary>
+            <returns>Вернет сгенерированный четырехзначный код</returns>
+        </member>
+        <member name="M:telecommunication_company.Pages.Autho.btnCod_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обработчик нажатия на кнопку по переходу на страницу, если пароль совпадает 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:telecommunication_company.Pages.Autho.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:telecommunication_company.Pages.ChangePassword">
+            <summary>
+            ChangePassword
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.ChangePassword.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="email"></param>
+        </member>
+        <member name="M:telecommunication_company.Pages.ChangePassword.Enter_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обработчик нажатия на кнопку смены пароля
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:telecommunication_company.Pages.ChangePassword.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:telecommunication_company.Pages.Guests">
+            <summary>
+            Логика взаимодействия для Guests.xaml
+            </summary>
+            <summary>
+            Guests
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.Guests.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.Guests.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:telecommunication_company.Pages.Konsultant">
+            <summary>
+            Логика взаимодействия для Konsultant.xaml
+            </summary>
+            <summary>
+            Konsultant
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.Konsultant.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:telecommunication_company.Pages.Manager">
+            <summary>
+            Логика взаимодействия для Manager.xaml
+            </summary>
+            <summary>
+            Manager
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.Manager.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:telecommunication_company.Pages.Monatajnik">
+            <summary>
+            Monatajnik
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.Monatajnik.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:telecommunication_company.Pages.PodtverjdenieParola">
+            <summary>
+            PodtverjdenieParola
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.PodtverjdenieParola.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.PodtverjdenieParola.Enter_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обработчик нажатия на кнопку отправки четырехзначного кода
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:telecommunication_company.Pages.PodtverjdenieParola.VerificationEmail(System.String)">
+            <summary>
+            Метод для отправки четырехзначного кода на почту пользователя
+            </summary>
+            <param name="sotrudnikEm"></param>
+            <returns>Вернет четырехзначный код</returns>
+        </member>
+        <member name="M:telecommunication_company.Pages.PodtverjdenieParola.EnterCod_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Метод для подтверждения отправленного кода
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:telecommunication_company.Pages.PodtverjdenieParola.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:telecommunication_company.Pages.Redactirovanie">
+            <summary>
+            Redactirovanie
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.Redactirovanie.#ctor(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:telecommunication_company.Pages.Redactirovanie.GetDoljnost(telecommunication_company.Model.Sotrudniki)">
+            <summary>
+            Метод для полчения строки должности в зависимости от кода
+            </summary>
+            <param name="s"></param>
+            <returns>Вернет строку название должности</returns>
+        </member>
+        <member name="M:telecommunication_company.Pages.Redactirovanie.Button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обработчик нажатия на кнопку очистить
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:telecommunication_company.Pages.Redactirovanie.Button_Click_1(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обработчик нажатия на кнопку редактировать. При нажатии запись в БД будет изменена
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:telecommunication_company.Pages.Redactirovanie.Doljnost(System.String)">
+            <summary>
+            Метод для получения кода должности
+            </summary>
+            <param name="doljnost"></param>
+            <returns>Вернет код должности</returns>
+        </member>
+        <member name="M:telecommunication_company.Pages.Redactirovanie.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:telecommunication_company.Pages.SpisokSotrudnikovPDF">
+            <summary>
+            Логика взаимодействия для SpisokSotrudnikovPDF.xaml
+            </summary>
+            <summary>
+            SpisokSotrudnikovPDF
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.SpisokSotrudnikovPDF.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:telecommunication_company.Pages.SpisokSotrudnikovPDF.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:telecommunication_company.Properties.Resources">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:telecommunication_company.Properties.Resources.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:telecommunication_company.Properties.Resources.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:telecommunication_company.Properties.Resources.icon">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:telecommunication_company.Properties.Resources.logo">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -15,6 +15,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button Grid.Row="0" x:Name="btnAdd" HorizontalAlignment="Left" Content="Добавить" Click="btnAdd_Click"/>
+        <Button Grid.Row="0" x:Name="btnSave" HorizontalAlignment="Left" Content="Сохранить PDF" Margin="160 0 0 0" Click="btnSave_Click"/>
+        <Button Grid.Row="0" x:Name="btnExcel" HorizontalAlignment="Left" Content="Получить Excel" Margin="320 0 0 0" Click="btnExcel_Click"/>
         <Button Grid.Row="0" x:Name="btnPoisk" HorizontalAlignment="Right" Content="Поиск" Click="btnPoisk_Click"/>
         <Button Grid.Row="0" x:Name="btnSort" HorizontalAlignment="Left" Margin="357,10,0,10" Content="Сортировать" Visibility="Hidden"/>
         <TextBox x:Name="txtbPoisk" Grid.Row="0" Width="150" Height="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,150,0" TextAlignment="Left" />
@@ -22,7 +24,7 @@
             <TextBlock Text="По возрастанию" Margin="0"/>
             <TextBlock Text="По убыванию" Margin="0"/>
         </ComboBox>
-
+        
         <ListView Grid.Row="1" x:Name="listSotrudniki" HorizontalContentAlignment="Stretch">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -48,5 +50,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
     </Grid>
 </Page>

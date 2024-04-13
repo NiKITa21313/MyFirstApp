@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Проекты C#\telecommunication_company\telecommunication_company\App.xaml
-9-80999460
+12338755522
 
-241832895117
-21-2027288422
-MainWindow.xaml;Pages\AddSotrudnik.xaml;Pages\Administrator.xaml;Pages\Autho.xaml;Pages\Guests.xaml;Pages\Konsultant.xaml;Pages\Manager.xaml;Pages\Monatajnik.xaml;Pages\Redactirovanie.xaml;
+30-1199082538
+43-187797469
+MainWindow.xaml;Pages\AddSotrudnik.xaml;Pages\Administrator.xaml;Pages\Autho.xaml;Pages\ChangePassword.xaml;Pages\Guests.xaml;Pages\Konsultant.xaml;Pages\Manager.xaml;Pages\Monatajnik.xaml;Pages\PodtverjdenieParola.xaml;Pages\Redactirovanie.xaml;Pages\SpisokSotrudnikovPDF.xaml;
 
 True
 

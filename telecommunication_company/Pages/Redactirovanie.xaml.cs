@@ -1,38 +1,58 @@
-﻿using System;
+﻿using HashPAsswords;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using telecommunication_company.Model;
-using static System.Windows.Forms.AxHost;
-using System.Data.Entity;
 
 namespace telecommunication_company.Pages
 {
 
     public partial class Redactirovanie : Page
     {
-        public Sotrudniki sotrudniki;
-        public TeleCompModel context;
+        TelecomModels context;
+        Sotrudniki sotrudnik;
+        User user;
+        Pasport pasport;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
         public Redactirovanie(int id)
         {
             InitializeComponent();
-            context = TeleCompModel.GetContext();//получение контекста БД
-            sotrudniki = TeleCompModel.GetContext().Sotrudniki.Where(i => i.ID_sotrudnika == id).FirstOrDefault();
-            //это просто вывод информации из таблицы БД в поля на странице редакирования
-            txbFamiliya.Text = sotrudniki.Familiya;
-            txbImya.Text = sotrudniki.Imya;
-            txbOtchestvo.Text = sotrudniki.Otchestvo;
-            DateTime date = (DateTime)sotrudniki.Data_rojdeniya;
-            txbDataRojdeniya.Text = date.ToString("yyyy-MM-dd");            
-            txbDoljnost.Text = GetDoljnost(sotrudniki);//вывод должности
-            string nomer = sotrudniki.Nomer_telefona;
-            txbNomerTelefona.Text = nomer.Substring(0, 12);
-            txbAdres.Text = sotrudniki.Adres;
 
+            context = TelecomModels.GetContext();//получение контекста БД
+            sotrudnik = TelecomModels.GetContext().Sotrudniki.Where(i => i.ID_sotrudnika == id).FirstOrDefault();
+            user = TelecomModels.GetContext().User.Where(i => i.ID_usera == sotrudnik.ID_usera).FirstOrDefault();
+            pasport = context.Pasport.Where(p => p.id_pasporta == sotrudnik.id_pasporta).FirstOrDefault();
+            //это просто вывод информации из таблицы БД в поля на странице редакирования
+            txbFamiliya.Text = sotrudnik.Familiya;
+            txbImya.Text = sotrudnik.Imya;
+            txbOtchestvo.Text = sotrudnik.Otchestvo;
+            DateTime date = (DateTime)sotrudnik.Data_rojdeniya;
+            txbDataRojdeniya.Text = date.ToString("yyyy-MM-dd");            
+            txbDoljnost.Text = GetDoljnost(sotrudnik);//вывод должности
+            string nomer = sotrudnik.Nomer_telefona;
+            txbNomerTelefona.Text = nomer.Substring(0, 12);
+            txbAdres.Text = sotrudnik.Adres;
+            txbLogin.Text = user.Login;
+            txbPochta.Text = sotrudnik.Pochta;
+            txbSeriya.Text = pasport.seriya.ToString();
+            txbNomer.Text = pasport.nomer.ToString();
+            txbVydan.Text = pasport.Vydan;
+
+            
         }
+        /// <summary>
+        /// Метод для полчения строки должности в зависимости от кода
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns>Вернет строку название должности</returns>
         private string GetDoljnost(Sotrudniki s)
         {
             string doljnost = "";
@@ -42,154 +62,96 @@ namespace telecommunication_company.Pages
             if (s.Doljnost == 4) doljnost = "Администратор";
             return doljnost;
         }
-
+        /// <summary>
+        /// Обработчик нажатия на кнопку очистить
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            txbFamiliya.Text = String.Empty;
-            txbImya.Text = String.Empty;
-            txbOtchestvo.Text = String.Empty;
-            txbDataRojdeniya.Text = String.Empty;
-            txbDoljnost.Text = String.Empty;
-            txbNomerTelefona.Text = String.Empty;
-            txbAdres.Text = String.Empty;
+            txbFamiliya.Text = "";
+            txbImya.Text = "";
+            txbOtchestvo.Text = "";
+            txbDataRojdeniya.Text = "";
+            txbDoljnost.Text = "";
+            txbNomerTelefona.Text = "";
+            txbPochta.Text = "";
+            txbAdres.Text = "";
         }
-
-        private void Button_Click_Save(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Обработчик нажатия на кнопку редактировать. При нажатии запись в БД будет изменена
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (txbFamiliya.Text == "" || txbImya.Text == "" || txbOtchestvo.Text == "" || txbDataRojdeniya.Text == "" 
-                || txbDoljnost.Text == "" || txbNomerTelefona.Text == "" || txbAdres.Text == "") 
-            {
-                MessageBox.Show("Все поля должны быть заполнены!");   
-            }
-            else
-            {
-                if (IsFIO(txbFamiliya.Text) || IsFIO(txbImya.Text) || IsFIO(txbOtchestvo.Text))
-                {                   
-                    sotrudniki.Familiya = txbFamiliya.Text;
-                    sotrudniki.Imya = txbImya.Text;
-                    sotrudniki.Otchestvo = txbOtchestvo.Text;
-                }
-                else 
-                {
-                    MessageBox.Show("Используйте только кириллицу");
-                }
-                if (IsDate(txbDataRojdeniya.Text))
-                {
-                    DateTime date;
-                    CultureInfo cultureInfo = CultureInfo.InvariantCulture;
-                    DateTime.TryParseExact(txbDataRojdeniya.Text, "yyyy-mm-dd", cultureInfo, DateTimeStyles.None, out date);
-                    sotrudniki.Data_rojdeniya = date;
-                }
-                else 
-                {
-                    MessageBox.Show("Используйте правильный формат yyyy-mm-dd ");
-                }
-                int idDoljnosti = 0;
-                IsDoljnost(txbDoljnost.Text,  out idDoljnosti);
-                if (idDoljnosti == 0)
-                {
-                    MessageBox.Show("Такой должности не сушествует");
-                }
-                else 
-                {
-                    sotrudniki.Doljnost = idDoljnosti;
-                }
-                if (IsNumberPhone(txbNomerTelefona.Text))
-                {
-                    sotrudniki.Nomer_telefona = txbNomerTelefona.Text;
-                }
-                else 
-                {
-                    MessageBox.Show("Введите номер в формате +7**********");
-                }
-                if (IsAddres(txbAdres.Text))
-                {
-                    sotrudniki.Adres = txbAdres.Text;
-                }
-                else 
-                {
-                    MessageBox.Show("Сначала введите улицу, а потом номер дома");
-                }                
-                context.Entry(sotrudniki).State = EntityState.Modified;
-                context.SaveChanges();
-                MessageBox.Show("Изменение произошло успешно");
-                NavigationService.Navigate(new Administrator());
-            }
-            
-            
-        }
-        private bool IsFIO(string str)//проверка правильности ввода ФИО
-        {
-            Regex formatFIO = new Regex("^[а-яА-Я]+$");
-            if (!formatFIO.Match(str).Success)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        private bool IsDate(string strDate)//проверка ввода даты
-        {
+            string errorPassword = "";
+            sotrudnik.Familiya = txbFamiliya.Text;
+            sotrudnik.Imya = txbImya.Text;
+            sotrudnik.Otchestvo = txbOtchestvo.Text;
             DateTime date;
             CultureInfo cultureInfo = CultureInfo.InvariantCulture;
-            if (DateTime.TryParseExact(strDate, "yyyy-mm-dd", cultureInfo, DateTimeStyles.None, out date))
+            if (DateTime.TryParseExact(txbDataRojdeniya.Text, "yyyy-mm-dd", cultureInfo, DateTimeStyles.None, out date))
             {
-                return true;
+                sotrudnik.Data_rojdeniya = date;
+            }
+            if (Doljnost(txbDoljnost.Text) != 0) sotrudnik.Doljnost = Doljnost(txbDoljnost.Text);
+            sotrudnik.Nomer_telefona = txbNomerTelefona.Text;
+            sotrudnik.Pochta = txbPochta.Text;
+            sotrudnik.Adres = txbAdres.Text;
+            user.Login = txbLogin.Text;
+            string inputPassword = txbPassword.Text;
+            if (inputPassword.Length != 0)
+            {
+                string hash = HashPassvord.HashPassword(inputPassword);//хэширование пароля
+                user.Password = hash;
             }
             else
             {
-                return false;
+                //пароль не записан
             }
-        }
-        private void IsDoljnost(string doljnost, out int id)
-        {
-            id = 0;
-            switch (doljnost)
+            pasport.seriya = Convert.ToInt32(txbSeriya.Text);
+            pasport.nomer = Convert.ToInt32(txbNomer.Text);
+            pasport.Vydan = txbVydan.Text;
+            var contextSotrudniki = new ValidationContext(sotrudnik);//ошибки по сотрудникам
+            var contextUser = new ValidationContext(user);//ошибки по юзеру
+            var results = new List<System.ComponentModel.DataAnnotations.ValidationResult>();//явно указали ссылку на пространстов имен ибо возникает неоднозначность между пространтсвами имен БЛИН           
+            bool res1, res2;//переменные с содержанием валидации данных
+            res1 = Validator.TryValidateObject(sotrudnik, contextSotrudniki, results, true);//валидация таблицы сотрудники
+            res2 = Validator.TryValidateObject(user, contextUser, results, true);//валидация таблицы юзер(авторизация)
+            if (res1 && res2)
             {
-                case "Монтажник":
-                    id = 1;
-                    break;
-                case "Менеджер":
-                    id = 2;
-                    break;
-                case "Продавец-консультант":
-                    id = 3;
-                    break;
-                case "Администратор":
-                    id = 4;
-                    break;
-                default:
-                    id = 0;
-                    break;
-            }
-        }
-        public bool IsAddres(string address)//проверка ввода адреса
-        {
-            string addresFormat = @"[а-яА-Я*\s]*\s\d+";
-            if (Regex.IsMatch(address, addresFormat))
-            {
-                return true;
+                context.Entry(user).State = EntityState.Modified;//редактирование таблицы User
+                context.Entry(sotrudnik).State = EntityState.Modified;//редактирование таблицы Sotrudniki
+                context.Entry(pasport).State = EntityState.Modified;                                                      
+                context.SaveChanges();
+                MessageBox.Show("Данные пользователя успешно измненены");
+                NavigationService.Navigate(new Administrator());
             }
             else
             {
-                return false;
+                string errorMessage = "Ошибки валидации:\n";
+                foreach (var error in results)
+                {
+                    errorMessage += error.ErrorMessage + "\n";
+                }
+                errorMessage += errorPassword;
+                MessageBox.Show(errorMessage);
+                errorPassword = "";
             }
         }
-        public bool IsNumberPhone(string phoneNumber)
+        /// <summary>
+        /// Метод для получения кода должности
+        /// </summary>
+        /// <param name="doljnost"></param>
+        /// <returns>Вернет код должности</returns>
+        private int Doljnost(string doljnost)
         {
-            Regex formatNomera = new Regex("^(\\+7)+([0-9]){10}$");
-
-            if (formatNomera.Match(phoneNumber).Success)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            if (doljnost == "Монтажник") return 1;
+            else if (doljnost == "Менеджер") return 2;
+            else if (doljnost == "Продавец-консультант") return 3;
+            else if (doljnost == "Администратор") return 4;
+            else return 0;
         }
     }
 }

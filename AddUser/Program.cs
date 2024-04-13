@@ -5,13 +5,19 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.ComponentModel.DataAnnotations;
 
 namespace AddUser
 {
     public class Program
     {
+        /// <summary>
+        /// В результате работы данного метода будет добавлена новая запиь в таблицу базы данных
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
+
             try
             {
                 telekommunikationEntities db = Helper.GetContext();
@@ -26,6 +32,9 @@ namespace AddUser
 
                     Console.Write("Введите имя пользователя: ");
                     sotrudnik.Imya = IsFIO();
+
+                    sotrudnik.Imya = Console.ReadLine();
+
                     Console.Write("Введите фамилию пользователя: ");
                     sotrudnik.Familiya = IsFIO();
                     Console.Write("Введите отчество пользователя: ");
@@ -54,7 +63,7 @@ namespace AddUser
                     string hashPassword = HashPassvord.HashPassword(password);
                     Console.Write("Хэшированный пароль пользователя:" + hashPassword);
                     user.Password = hashPassword;//запись хэшированнного пароля в БД
-
+                    
                     helper.CreateUsers(user);//сохранение User-а
                     sotrudnik.ID_usera = user.ID_usera;//запись ID_usera из таблицы User в таблицу Sotrudniki
                     helper.CreateSotrudnik(sotrudnik);
@@ -72,6 +81,10 @@ namespace AddUser
                 MessageBox.Show(ex.Message);
             }
         }
+        /// <summary>
+        /// Метод принимает строку и проверяет подходит ли она под регулярное выражение
+        /// </summary>
+        /// <returns>Вернет строку</returns>
         public static string IsFIO()
         {
             Regex formatFIO = new Regex("^[а-яА-Я]+$");
@@ -92,6 +105,10 @@ namespace AddUser
             while (true);
             
         }
+        /// <summary>
+        /// Метод проверяет правильность ввода даты по формату
+        /// </summary>
+        /// <returns>Вернет дату</returns>
         public static DateTime IsDate()
         {
             DateTime date;
@@ -112,6 +129,10 @@ namespace AddUser
             Console.WriteLine("Шикарно, вы справились и с этим)");
             return date;
         }
+        /// <summary>
+        /// Метод проверяет правильность ввода адреса(за названием улицы должен следовать номер дома)
+        /// </summary>
+        /// <returns>Вернет строку адреса</returns>
         public static string IsAddres()
         {
             string addresFormat = @"[а-яА-Я*\s]*\s\d+";
@@ -132,6 +153,10 @@ namespace AddUser
             Console.WriteLine("Просто бомба, вы и это смогли:)");
             return addres;
         }
+        /// <summary>
+        /// Метод проверяет правильность ввода номера телефона
+        /// </summary>
+        /// <returns>вернет строку номер телефона в формате +71231234334</returns>
         public static string IsNumberTelephone()
         {
             Regex formatNomera = new Regex("^(\\+7)+([0-9]){10}$");
@@ -172,6 +197,11 @@ namespace AddUser
             Console.WriteLine("Это невероятно");
             return login;
         }
+        /// <summary>
+        /// Метод проверяет наличие должности в базе данных
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="sotrudnik"></param>
         public static void RightDoljnost(telekommunikationEntities db, Sotrudniki sotrudnik) //проверка на наличие должности в БД
         {
             do

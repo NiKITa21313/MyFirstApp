@@ -3,9 +3,19 @@ using System.Data.Entity;
 
 namespace AddUser
 {
+    /// <summary>
+    /// Класс, предназначенный для работы с БД
+    /// </summary>
     public class Helper
     {
+        /// <summary>
+        /// переменная контекста БД
+        /// </summary>
         private static telekommunikationEntities s_telekommunikationEntities;
+        /// <summary>
+        /// Метод для полчения контекста БД
+        /// </summary>
+        /// <returns>Вернет подключение к БД</returns>
         public static telekommunikationEntities GetContext()
         {
             if (s_telekommunikationEntities == null)
@@ -34,14 +44,6 @@ namespace AddUser
             var users = s_telekommunikationEntities.Sotrudniki.Find(idUsers);
             s_telekommunikationEntities.Sotrudniki.Remove(users);
             s_telekommunikationEntities.SaveChanges();
-        }
-        public void FilterUsers()
-        {
-
-        }
-        public void SortUsers()
-        {
-
         }
     }
 }

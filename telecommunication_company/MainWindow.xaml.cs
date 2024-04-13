@@ -6,13 +6,14 @@ namespace telecommunication_company
 {
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
-            Model.TeleCompModel.GetContext();
             FrmMain.Navigate(new Autho());
         }
-
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             FrmMain.GoBack();
@@ -28,7 +29,6 @@ namespace telecommunication_company
                 btnBack.Visibility = Visibility.Hidden;
             }
         }
-
         private void FrmMain_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
 

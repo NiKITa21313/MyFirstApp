@@ -10,6 +10,7 @@ D:\Проекты C#\telecommunication_company\AddUser\bin\Debug\EntityFramework
 D:\Проекты C#\telecommunication_company\AddUser\bin\Debug\ru\EntityFramework.resources.dll
 D:\Проекты C#\telecommunication_company\AddUser\obj\Debug\AddUser.csproj.AssemblyReference.cache
 D:\Проекты C#\telecommunication_company\AddUser\obj\Debug\AddUser.csproj.CoreCompileInputs.cache
-D:\Проекты C#\telecommunication_company\AddUser\obj\Debug\AddUser.csproj.CopyComplete
 D:\Проекты C#\telecommunication_company\AddUser\obj\Debug\AddUser.exe
 D:\Проекты C#\telecommunication_company\AddUser\obj\Debug\AddUser.pdb
+D:\Проекты C#\telecommunication_company\AddUser\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+D:\Проекты C#\telecommunication_company\AddUser\obj\Debug\AddUser.csproj.Up2Date
